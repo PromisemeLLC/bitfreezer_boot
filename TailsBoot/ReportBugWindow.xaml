@@ -1,0 +1,85 @@
+﻿<Window x:Class="TailsBoot.ReportBugWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TailsBoot"
+        mc:Ignorable="d"
+        Title="Report Bug"  Height="257" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Background="White" WindowStyle="None" MouseMove="ReportBugWindow_OnMouseMove" MouseDown="ReportBugWindow_OnMouseDown" MouseUp="ReportBugWindow_OnMouseUp">
+    <Window.Resources>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" CornerRadius="7">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="400" Background="#FFACA39A">
+            <Button Name="btnClose" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="22" Canvas.Left="368" Canvas.Top="10" Height="22" BorderBrush="{x:Null}" Click="btnClose_Click" Style="{DynamicResource BtnCloseStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/orion_close.png"/>
+                </Button.Background>
+            </Button>
+            <Canvas HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="22" Canvas.Left="10" Canvas.Top="10" RenderTransformOrigin="0,0.625">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="images/snowflake.png"/>
+                </Canvas.Background>
+            </Canvas>
+            <TextBlock x:Name="_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="BitFreezer Boot" VerticalAlignment="Top" Canvas.Left="37" Canvas.Top="10" Style="{StaticResource UbuntuRegular}" Foreground="White" IsHitTestVisible="False" Height="22" FontSize="16"/>
+        </Canvas>
+        <Canvas HorizontalAlignment="Left" Height="200" Margin="99,47,0,0" VerticalAlignment="Top" Width="186">
+            <Canvas.Background>
+                <ImageBrush ImageSource="images/snowflake.png"/>
+            </Canvas.Background>
+            <Canvas.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="360" Color="#f0f0f0"/>
+            </Canvas.Effect>
+
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Something goes wrong. Please, report us about this crash" VerticalAlignment="Top" FontSize="18" Style="{StaticResource UbuntuRegular}" Canvas.Left="-87" Canvas.Top="10" Width="378" TextAlignment="Center"/>
+            <TextBlock Canvas.Left="5" TextWrapping="Wrap" Text="" Canvas.Top="56" Style="{StaticResource UbuntuLight}" FontSize="16"/>
+        </Canvas>
+        <Button TabIndex="4" Content="Cancel" Click="Button_Click_1" VerticalAlignment="Top" Height="38" BorderBrush="Black"  Foreground="Black" FontFamily="/BitFreezerBoot;component/Fonts/#Ubuntu" FontWeight="Bold" ForceCursor="True" FontSize="18" BorderThickness="1" Margin="241,203,50,0" ClipToBounds="True" Style="{DynamicResource WhiteButtonStyle}"  />
+        <TextBox TabIndex="1" Name="txtEmail" Height="23" Margin="105,113,105,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" FontFamily="Ubuntu Light" VerticalContentAlignment="Center" Foreground="#6c6c6c" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Style="{DynamicResource TextBoxStyle1}"/>
+        <Button TabIndex="3" Name="btnReport" Click="button_Click" Content="Report" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Height="38" BorderBrush="{x:Null}" Style="{DynamicResource BlackButtonStyle}" Foreground="White" FontFamily="/BitFreezerBoot;component/Fonts/#Ubuntu" FontWeight="Bold" ForceCursor="True" FontSize="18" BorderThickness="0" Margin="50,203,0,0" />
+        <TextBox TabIndex="2" Name="txtUsername" Height="23" Margin="105,141,105,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" FontFamily="Ubuntu Light" VerticalContentAlignment="Center" Foreground="#6c6c6c" GotFocus="TextBox_GotFocus_1" LostFocus="TextBox_LostFocus_1" Style="{DynamicResource TextBoxStyle1}"/>
+    </Grid>
+</Window>

@@ -1,0 +1,51 @@
+﻿<Window x:Class="TailsBoot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+         Title="BitFreezer Boot" Height="600" Width="800" WindowStyle="None" Loaded="Window_Loaded" Background="{x:Null}" WindowStartupLocation="CenterScreen" MouseDown="PnMouseDown" MouseUp="PnMouseUp" MouseMove="PnMouseMove" ResizeMode="NoResize">
+    <Window.Resources>
+
+    </Window.Resources>
+
+    <Grid  Height="600" Width="800" Background="White">
+        <Canvas HorizontalAlignment="Left" Height="50" VerticalAlignment="Bottom" Width="800" Background="#FFACA39A" Margin="0,0,0,550">
+            <Button Content="" Name="btnClose" HorizontalAlignment="Left" VerticalAlignment="Top" Width="22" Canvas.Left="768" Canvas.Top="14" Height="22" BorderBrush="{x:Null}" Click="btnClose_Click" Style="{DynamicResource BtnCloseStyle}" RenderTransformOrigin="0.955,0.5">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/orion_close.png"/>
+                </Button.Background>
+            </Button>
+            <Canvas HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="36" Canvas.Left="19" Canvas.Top="7">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="images/snowflake.png"/>
+                </Canvas.Background>
+            </Canvas>
+            <Button Name="btnMinimize" Width="22" Canvas.Left="741" Canvas.Top="14" Height="22" BorderBrush="{x:Null}" Click="btnMinimize_Click" Style="{DynamicResource BtnMinimizeStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/minus.png"/>
+                </Button.Background>
+            </Button>
+            <TextBlock x:Name="_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="BitFreezer Boot" VerticalAlignment="Top" Canvas.Left="73" Canvas.Top="14" FontSize="18" Style="{StaticResource UbuntuRegular}" Foreground="White" IsHitTestVisible="False" Height="22"/>
+            <Ellipse x:Name="indicator" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="10" RenderTransformOrigin="0.6,-7.2" Canvas.Left="210" Canvas.Top="20" IsEnabled="False">
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                        <GradientStop Color="Red" Offset="0"/>
+                        <GradientStop Color="#FF7E0B0B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Canvas>
+        <Canvas HorizontalAlignment="Left" Height="410" Margin="195,113,0,0" VerticalAlignment="Top" Width="410">
+            <Canvas.Background>
+                <ImageBrush ImageSource="images/snowflake.png"/>
+            </Canvas.Background>
+            <Canvas.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="360" Color="#f0f0f0"/>
+            </Canvas.Effect>
+            <TextBlock Name="lblTop" TextWrapping="Wrap" Text="Could not find BitFreezer" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18" Style="{StaticResource UbuntuRegular}" Canvas.Left="102" Canvas.Top="88" Margin="0,1,0,0" TextAlignment="Center" Width="206"/>
+            <TextBlock Name="lblBot" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Please plug in BitFreezer" VerticalAlignment="Top" FontSize="30" Style="{StaticResource UbuntuRegular}" Canvas.Left="38" Canvas.Top="133" TextAlignment="Center" Width="340"/>
+            <Button Name="btnRestart" Click="btnRestart_Click" Content="Restart now" HorizontalAlignment="Left" VerticalAlignment="Top" Width="170" Height="50" BorderBrush="{x:Null}" Style="{DynamicResource BlackButtonStyle}" Foreground="White" FontFamily="/BitFreezerBoot;component/Fonts/#Ubuntu" FontWeight="Bold" ForceCursor="True" FontSize="18" BorderThickness="0" Canvas.Left="120" Canvas.Top="246" />
+        </Canvas>
+    </Grid>
+</Window>

@@ -1,0 +1,110 @@
+﻿<Window x:Class="TailsBoot.BtfUpdateDownloadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+       Title="BitFreezer Boot" Height="274" Width="419" WindowStyle="None" Closed="Window_Closed" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" MouseMove="BtfUpdateDownloadWindow_OnMouseMove" MouseDown="BtfUpdateDownloadWindow_OnMouseDown" MouseUp="BtfUpdateDownloadWindow_OnMouseUp">
+    <Window.Resources>
+        <SolidColorBrush x:Key="ProgressBar.Background" Color="#FFE8E8E8"/>
+        <SolidColorBrush x:Key="ProgressBar.Border" Color="Transparent"/>
+        <Style x:Key="ProgressBarStyle1" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                        <GradientStop Color="#FFACA39A" Offset="0"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="{StaticResource ProgressBar.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ProgressBar.Border}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid x:Name="TemplateRoot">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Determinate"/>
+                                    <VisualState x:Name="Indeterminate">
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Animation">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="Animation">
+                                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5"/>
+                                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5"/>
+                                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5"/>
+                                            </PointAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="7.5"/>
+                            <Rectangle x:Name="PART_Track"/>
+                            <Grid x:Name="PART_Indicator" ClipToBounds="true" HorizontalAlignment="Left">
+                                <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" RadiusY="7.5" RadiusX="7.5"/>
+                                <Rectangle x:Name="Animation" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="0.5,0.5" RadiusY="7.5" RadiusX="7.5">
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="LayoutTransform" TargetName="TemplateRoot">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsIndeterminate" Value="true">
+                                <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+    </Window.Resources>
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="419" Background="#FFACA39A">
+            <Button Content="" Name="btnClose" HorizontalAlignment="Left" VerticalAlignment="Top" Width="22" Canvas.Left="387" Canvas.Top="10" Height="22" BorderBrush="{x:Null}" Click="btnClose_Click" Style="{DynamicResource BtnCloseStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/orion_close.png"/>
+                </Button.Background>
+            </Button>
+            <Canvas HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="22" Canvas.Left="10" Canvas.Top="10" RenderTransformOrigin="0,0.625">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="images/snowflake.png"/>
+                </Canvas.Background>
+            </Canvas>
+            <TextBlock x:Name="_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="BitFreezer Boot" VerticalAlignment="Top" Canvas.Left="37" Canvas.Top="10" Style="{StaticResource UbuntuRegular}" Foreground="White" IsHitTestVisible="False" Height="22" FontSize="16"/>
+        </Canvas>
+        <Canvas Height="217" Margin="105,47,105,0" VerticalAlignment="Top">
+            <Canvas.Background>
+                <ImageBrush ImageSource="images/snowflake.png"/>
+            </Canvas.Background>
+            <Canvas.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="360" Color="#f0f0f0"/>
+            </Canvas.Effect>
+        </Canvas>
+        <ProgressBar Name="progressBar" Style="{DynamicResource ProgressBarStyle1}" Margin="54,133,54,123"/>
+        <TextBlock TextWrapping="Wrap" Text="Downloading Update..." VerticalAlignment="Top" FontSize="24" Style="{StaticResource UbuntuRegular}" TextAlignment="Center" Margin="85,57,86,0"/>
+        <TextBlock x:Name="lblProgress" TextWrapping="Wrap" Text="" Style="{StaticResource UbuntuLight}" FontSize="16" TextAlignment="Center" Margin="10,170,10,85"/>
+
+    </Grid>
+</Window>

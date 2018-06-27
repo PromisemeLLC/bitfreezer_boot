@@ -1,0 +1,36 @@
+﻿<Window x:Class="TailsBoot.MessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Warning" Height="211" Width="400" MaxHeight="211" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" MouseMove="MessageWindow_OnMouseMove" MouseDown="MessageWindow_OnMouseDown" MouseUp="MessageWindow_OnMouseUp">
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="400" Background="#FFACA39A">
+            <Button Name="btnClose" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="22" Canvas.Left="368" Canvas.Top="10" Height="22" BorderBrush="{x:Null}" Style="{DynamicResource BtnCloseStyle}" RenderTransformOrigin="1.5,0.636">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/orion_close.png"/>
+                </Button.Background>
+            </Button>
+            <Canvas HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="22" Canvas.Left="10" Canvas.Top="10" RenderTransformOrigin="0,0.625">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="images/snowflake.png"/>
+                </Canvas.Background>
+            </Canvas>
+            <TextBlock x:Name="_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="BitFreezer Boot" VerticalAlignment="Top" Canvas.Left="37" Canvas.Top="10" Style="{StaticResource UbuntuRegular}" Foreground="White" IsHitTestVisible="False" Height="22" FontSize="16"/>
+        </Canvas>
+        <Canvas Height="156" Margin="118,47,118,0" VerticalAlignment="Top">
+            <Canvas.Background>
+                <ImageBrush ImageSource="images/snowflake.png"/>
+            </Canvas.Background>
+            <Canvas.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="360" Color="#f0f0f0"/>
+            </Canvas.Effect>
+        </Canvas>
+        <TextBlock x:Name="txtMessage" TextWrapping="Wrap" Text="" Style="{StaticResource UbuntuLight}" FontSize="16" TextAlignment="Center" Margin="10,47,10,70"/>
+        <Button Content="Ok" VerticalAlignment="Top" Height="38" BorderBrush="{x:Null}" Style="{DynamicResource BlackButtonStyle}" Foreground="White" FontFamily="/BitFreezerBoot;component/Fonts/#Ubuntu" FontWeight="Bold" ForceCursor="True" FontSize="18" BorderThickness="0" Click="Button_Click" Margin="145,146,146,0" />
+
+    </Grid>
+</Window>
+
+<!--Height="211" Width="400"-->

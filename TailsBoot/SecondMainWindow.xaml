@@ -1,0 +1,47 @@
+﻿<Window x:Class="TailsBoot.SecondMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="BitFreezer Boot" Height="600" Width="800" WindowStyle="None" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" MouseMove="SecondMainWindow_OnMouseMove" MouseDown="SecondMainWindow_OnMouseDown" MouseUp="SecondMainWindow_OnMouseUp">
+
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="800" Background="#FFACA39A">
+            <Button Name="btnClose" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="22" Canvas.Left="768" Canvas.Top="14" Height="22" BorderBrush="{x:Null}" Click="btnClose_Click" Style="{DynamicResource BtnCloseStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/orion_close.png"/>
+                </Button.Background>
+            </Button>
+            <Canvas HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="36" Canvas.Left="19" Canvas.Top="7">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="images/snowflake.png"/>
+                </Canvas.Background>
+            </Canvas>
+            <Button Name="btnMinimize" Width="22" Canvas.Left="741" Canvas.Top="14" Height="22" BorderBrush="{x:Null}" Click="btnMinimize_Click" Style="{DynamicResource BtnMinimizeStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="images/minus.png"/>
+                </Button.Background>
+            </Button>
+            <TextBlock x:Name="_1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="BitFreezer Boot" VerticalAlignment="Top" Canvas.Left="73" Canvas.Top="14" FontSize="18" Style="{StaticResource UbuntuRegular}" Foreground="White" IsHitTestVisible="False" Height="22"/>
+            <Ellipse x:Name="indicator" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="10" RenderTransformOrigin="0.6,-7.2" Canvas.Left="210" Canvas.Top="20" IsEnabled="False">
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Red" Offset="0"/>
+                        <GradientStop Color="#FF7E0B0B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Canvas>
+        <TextBlock Name="lblTop" Margin="296,76,296,0" TextWrapping="Wrap" Text="Could not find BitFreezer" VerticalAlignment="Top" FontSize="18" Style="{StaticResource UbuntuRegular}"/>
+        <TextBlock Name="lblBot" Margin="230,107,230,0" TextWrapping="Wrap" Text="Please plug in BitFreezer" VerticalAlignment="Top" FontSize="30" Style="{StaticResource UbuntuRegular}" TextAlignment="Center"/>
+        <TextBlock Margin="64,165,64,0" TextWrapping="Wrap" Text="Unfortunately your BIOS is in UEFI mode, you won't be able to automatically launch BitFreezer, but don't worry! Just follow these extra steps: " VerticalAlignment="Top" FontSize="16" Height="46" Style="{StaticResource UbuntuLight}" TextAlignment="Center" Foreground="#FF6C6C6C"/>
+        <Image Height="163" Margin="70,226,418,0" VerticalAlignment="Top" Source="images/1.png" Stretch="UniformToFill"/>
+        <Image Height="163" Margin="418,226,70,0" VerticalAlignment="Top" Source="images/2.png" Stretch="UniformToFill"/>
+        <TextBlock HorizontalAlignment="Left" Margin="97,408,0,0" TextWrapping="Wrap" Text="1. After being redirected please click &quot;Use a device&quot;" VerticalAlignment="Top" FontSize="16" Style="{StaticResource UbuntuLight}" Width="258" TextAlignment="Center"/>
+        <TextBlock Margin="428,408,80,0" TextWrapping="Wrap" Text="2. Please click &quot;UEFI: USB Flash Disk 1100, Partition 1&quot; " VerticalAlignment="Top" FontSize="16" Style="{StaticResource UbuntuLight}" TextAlignment="Center"/>
+        <Button Name="btnRestart" Content="Continue" Margin="315,472,315,0" VerticalAlignment="Top" Height="50" BorderBrush="{x:Null}" Foreground="White" FontFamily="/BitFreezerBoot;component/Fonts/#Ubuntu" FontWeight="Bold" ForceCursor="True" FontSize="18" BorderThickness="0" Click="btnRestart_Click" Style="{DynamicResource BlackButtonStyle}" />
+        <TextBlock Margin="243,565,242,0" TextWrapping="Wrap" Text="Please memorize or write down step 1 and 2" VerticalAlignment="Top" FontSize="16" Style="{StaticResource UbuntuLight}"/>
+
+    </Grid>
+</Window>
